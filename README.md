@@ -41,7 +41,7 @@ This is a simple, production-style backend service to register and trigger webho
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/webhook-service.git
+git clone https://github.com/Chauhanrudra/webhook-service.git
 cd webhook-service
 ```
 
