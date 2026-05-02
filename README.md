@@ -9,7 +9,7 @@ This is a simple, production-style backend service to register and trigger webho
 - Register webhook URLs for specific event types
 - Trigger events with custom payloads
 - Uses Redis + Bull queue to handle async dispatching
-- Retries failed webhook deliveries
+- Retries failed webhook deliveries with exponential backoff
 - Clean REST API (no frontend)
 
 ---
@@ -59,6 +59,8 @@ Create a `.env` file in the root:
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/webhook_service
 REDIS_URL=redis://127.0.0.1:6379
+WEBHOOK_RETRY_ATTEMPTS=5
+WEBHOOK_RETRY_DELAY_MS=1000
 ```
 
 4. **Start Redis and MongoDB locally.**
@@ -135,7 +137,7 @@ webhook-service/
 - Authentication for webhook registration
 - Delivery status logs per webhook
 - Admin dashboard (if frontend is added)
-- Retry strategy with exponential backoff
+- Per-webhook retry policies
 
 ---
 
